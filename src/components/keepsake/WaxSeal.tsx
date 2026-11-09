@@ -71,8 +71,10 @@ function SealArt() {
   );
 }
 
-const LEFT = "polygon(0 0, 53% 0, 47% 18%, 55% 36%, 46% 55%, 54% 74%, 48% 100%, 0 100%)";
-const RIGHT = "polygon(53% 0, 100% 0, 100% 100%, 48% 100%, 54% 74%, 46% 55%, 55% 36%, 47% 18%)";
+const LEFT =
+  "polygon(-30% -30%, 53% -30%, 53% 0, 47% 18%, 55% 36%, 46% 55%, 54% 74%, 48% 100%, 48% 130%, -30% 130%)";
+const RIGHT =
+  "polygon(53% -30%, 130% -30%, 130% 130%, 48% 130%, 48% 100%, 54% 74%, 46% 55%, 55% 36%, 47% 18%, 53% 0)";
 
 /** Bordeaux wax seal. When `broken`, it cracks in two and falls away. */
 export function WaxSeal({ broken, className }: { broken: boolean; className?: string }) {
