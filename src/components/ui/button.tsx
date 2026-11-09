@@ -16,8 +16,13 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        keepsake:
+          "rounded-[3px] bg-primary text-primary-foreground font-sans font-medium tracking-[0.01em] shadow-button transition-[transform,box-shadow,background-color] duration-300 hover:-translate-y-px hover:bg-wine-deep hover:shadow-button-hover active:translate-y-0 active:scale-[0.985]",
+        keepsakeLine:
+          "rounded-[3px] border border-line bg-paper/60 text-wine font-sans font-medium tracking-[0.01em] backdrop-blur-sm transition-[transform,background-color,border-color] duration-300 hover:border-rose-deep hover:bg-paper active:scale-[0.985]",
       },
       size: {
+        keepsake: "h-12 px-7 text-[13px]",
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
