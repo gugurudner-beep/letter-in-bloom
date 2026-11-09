@@ -176,6 +176,9 @@ function EnvelopePocket() {
         <filter id={`seam-${id}`} x="-5%" y="-10%" width="110%" height="120%">
           <feDropShadow dx="0" dy="-0.8" stdDeviation="1.1" floodColor="oklch(0.4 0.06 8)" floodOpacity="0.2" />
         </filter>
+        <clipPath id={`pocketClip-${id}`}>
+          <path d="M0,0 L136,103 Q150,113 136,121 L0,200 Z M300,0 L164,103 Q150,113 164,121 L300,200 Z M0,200 L130,110 Q150,97 170,110 L300,200 Z" />
+        </clipPath>
         <filter id={`seamSide-${id}`} x="-5%" y="-5%" width="110%" height="110%">
           <feDropShadow dx="0" dy="0.6" stdDeviation="1" floodColor="oklch(0.4 0.06 8)" floodOpacity="0.14" />
         </filter>
@@ -191,10 +194,8 @@ function EnvelopePocket() {
       <path d="M299,1 L164,103" stroke="oklch(1 0 0)" strokeOpacity="0.45" strokeWidth="0.6" fill="none" />
       <path d="M2,199 L130,111 Q150,98 170,111 L298,199" stroke="oklch(1 0 0)" strokeOpacity="0.5" strokeWidth="0.6" fill="none" />
       <rect x="0.4" y="0.4" width="299.2" height="199.2" rx="3" fill="none" stroke="oklch(0.78 0.04 12)" strokeOpacity="0.5" strokeWidth="0.6" />
-      <foreignObject x="0" y="0" width="300" height="200">
-        <div className="relative h-full w-full mix-blend-multiply">
-          <span className="absolute inset-0 grain opacity-40" />
-        </div>
+      <foreignObject x="0" y="0" width="300" height="200" clipPath={`url(#pocketClip-${id})`}>
+        <span className="block h-full w-full grain opacity-40" />
       </foreignObject>
     </svg>
   );
@@ -222,7 +223,6 @@ function EnvelopeFlap() {
           </clipPath>
         </defs>
         <path d={shape} fill={`url(#flap-${id})`} />
-        <path d="M2,1 L167,113" stroke="none" />
         <path d="M1,0.8 L133,113 M299,0.8 L167,113" stroke="oklch(1 0 0)" strokeOpacity="0.6" strokeWidth="0.7" fill="none" />
         <foreignObject x="0" y="0" width="300" height="124" clipPath={`url(#flapClip-${id})`}>
           <span className="block h-full w-full grain opacity-40" />
@@ -237,7 +237,7 @@ function EnvelopeFlap() {
       >
         <defs>
           <Liner id={`flapLiner-${id}`} />
-          <linearGradient id={`flapShade-${id}`} x1="0" y1="1" x2="0" y2="0">
+          <linearGradient id={`flapShade-${id}`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="oklch(0.35 0.06 8)" stopOpacity="0.22" />
             <stop offset="1" stopColor="oklch(0.35 0.06 8)" stopOpacity="0" />
           </linearGradient>
@@ -246,8 +246,8 @@ function EnvelopeFlap() {
         <g transform="translate(0 124) scale(1 -1)">
           <path d={shape} fill="oklch(0.93 0.022 18)" />
           <path d="M12,4 H288 L165,106 Q150,117 135,106 Z" fill={`url(#flapLiner-${id})`} />
+          <path d={shape} fill={`url(#flapShade-${id})`} />
         </g>
-        <rect width="300" height="124" fill={`url(#flapShade-${id})`} />
       </svg>
     </>
   );
