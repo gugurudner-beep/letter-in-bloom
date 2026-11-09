@@ -195,7 +195,7 @@ function EnvelopePocket() {
       <path d="M1,1 L136,103" stroke="oklch(1 0 0)" strokeOpacity="0.55" strokeWidth="0.6" fill="none" />
       <path d="M299,1 L164,103" stroke="oklch(1 0 0)" strokeOpacity="0.45" strokeWidth="0.6" fill="none" />
       <path d="M2,199 L130,111 Q150,98 170,111 L298,199" stroke="oklch(1 0 0)" strokeOpacity="0.5" strokeWidth="0.6" fill="none" />
-      <rect x="0.4" y="0.4" width="299.2" height="199.2" rx="3" fill="none" stroke="oklch(0.78 0.04 12)" strokeOpacity="0.5" strokeWidth="0.6" />
+      <path d="M0.4,0.4 V199.6 H299.6 V0.4" fill="none" stroke="oklch(0.78 0.04 12)" strokeOpacity="0.5" strokeWidth="0.6" />
       <foreignObject x="0" y="0" width="300" height="200" clipPath={`url(#pocketClip-${id})`}>
         <span className="block h-full w-full grain opacity-40" />
       </foreignObject>
