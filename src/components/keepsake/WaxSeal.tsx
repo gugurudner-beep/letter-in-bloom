@@ -19,11 +19,11 @@ function waxPath(cx: number, cy: number, r: number, n = 64) {
   const mid = (p: [number, number], q: [number, number]) =>
     [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2] as const;
   const f = (v: number) => v.toFixed(2);
-  const start = mid(pts[n - 1], pts[0]);
+  const start = mid(pts[n - 1]!, pts[0]!);
   let d = `M${f(start[0])},${f(start[1])}`;
   for (let i = 0; i < n; i++) {
-    const p = pts[i];
-    const m = mid(p, pts[(i + 1) % n]);
+    const p = pts[i]!;
+    const m = mid(p, pts[(i + 1) % n]!);
     d += ` Q${f(p[0])},${f(p[1])} ${f(m[0])},${f(m[1])}`;
   }
   return d + " Z";

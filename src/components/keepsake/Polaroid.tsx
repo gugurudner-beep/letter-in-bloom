@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { Grain } from "./Grain";
 
 type PolaroidProps = {
-  photo?: string | null;
+  photo?: string | null | undefined;
   /** When provided, the photo window becomes a local image picker (nothing is uploaded). */
   onPickPhoto?: (url: string) => void;
   /** Subtle 3D tilt that follows the pointer / finger. */
@@ -67,7 +67,7 @@ export function Polaroid({
         onPointerMove={onMove}
         onPointerLeave={onLeave}
         onPointerUp={onLeave}
-        style={tilt ? { rotateX, rotateY, transformStyle: "preserve-3d" } : undefined}
+        style={tilt ? { rotateX, rotateY, transformStyle: "preserve-3d" } : {}}
         className="relative rounded-[2px] bg-paper px-[6.2%] pb-[24%] pt-[6.2%] shadow-polaroid"
       >
         <Grain strength={0.55} />
@@ -78,7 +78,9 @@ export function Polaroid({
         />
 
         {/* photo window */}
-        <PhotoWindow photo={photo} interactive={!!onPickPhoto} onPick={() => inputRef.current?.click()} />
+        <PhotoWindow photo={photo} interactive={!!onPickPhoto} onPick={() => {
+            inputRef.current?.click();
+          }} />
         {onPickPhoto && (
           <input ref={inputRef} type="file" accept="image/*" className="sr-only" tabIndex={-1} onChange={onFile} />
         )}
@@ -106,7 +108,15 @@ export function Polaroid({
   );
 }
 
-function PhotoWindow({ photo, interactive, onPick }: { photo?: string | null; interactive: boolean; onPick: () => void }) {
+function PhotoWindow({
+  photo,
+  interactive,
+  onPick,
+}: {
+  photo?: string | null | undefined;
+  interactive: boolean;
+  onPick: () => void;
+}) {
   const Tag = interactive ? "button" : "div";
   return (
     <Tag

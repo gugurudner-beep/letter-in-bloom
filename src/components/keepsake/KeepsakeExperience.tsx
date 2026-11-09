@@ -67,7 +67,7 @@ export function KeepsakeExperience() {
                         ? { opacity: 1, y: 0, rotate: 0, scale: 1 }
                         : { opacity: 1, y: [0, -6, 0], rotate: -4 }
                     }
-                    whileTap={stage === "closed" ? { scale: 0.985 } : undefined}
+                    whileTap={{ scale: stage === "closed" ? 0.985 : 1 }}
                     transition={
                       stage === "opening"
                         ? { duration: 0.6, ease: SOFT }
