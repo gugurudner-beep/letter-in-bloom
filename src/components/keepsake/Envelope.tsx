@@ -177,7 +177,9 @@ function EnvelopePocket() {
           <feDropShadow dx="0" dy="-0.8" stdDeviation="1.1" floodColor="oklch(0.4 0.06 8)" floodOpacity="0.2" />
         </filter>
         <clipPath id={`pocketClip-${id}`}>
-          <path d="M0,0 L136,103 Q150,113 136,121 L0,200 Z M300,0 L164,103 Q150,113 164,121 L300,200 Z M0,200 L130,110 Q150,97 170,110 L300,200 Z" />
+          <path d="M0,0 L136,103 Q150,113 136,121 L0,200 Z" />
+          <path d="M300,0 L164,103 Q150,113 164,121 L300,200 Z" />
+          <path d="M0,200 L130,110 Q150,97 170,110 L300,200 Z" />
         </clipPath>
         <filter id={`seamSide-${id}`} x="-5%" y="-5%" width="110%" height="110%">
           <feDropShadow dx="0" dy="0.6" stdDeviation="1" floodColor="oklch(0.4 0.06 8)" floodOpacity="0.14" />

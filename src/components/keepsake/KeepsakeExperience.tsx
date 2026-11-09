@@ -60,7 +60,7 @@ export function KeepsakeExperience() {
                   </motion.div>
 
                   <motion.div
-                    className="group mt-[min(22vh,190px)]"
+                    className="group mt-16"
                     initial={{ opacity: 0, y: 24, rotate: -4 }}
                     animate={
                       stage === "opening"
@@ -140,7 +140,7 @@ export function KeepsakeExperience() {
                 <motion.section key="letter" className="flex w-full flex-col items-center">
                   <motion.div
                     layoutId={POLAROID_ID}
-                    className="relative z-20 mb-[-28px] w-[min(46vw,190px)] self-end mr-[2%]"
+                    className="relative z-20 mb-[-22px] w-[min(44vw,186px)] self-end mr-[2%]"
                     animate={{ rotate: 5 }}
                     transition={{ ...LAYOUT, rotate: { duration: 1, ease: SOFT } }}
                   >

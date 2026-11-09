@@ -10,7 +10,7 @@ const T_BOTTOM = { delay: 1.35, duration: 1.05, ease: FOLD };
 /** Full letter face. Rendered once invisibly (to size the sheet) and once per fold panel. */
 function LetterFace() {
   return (
-    <div className="relative px-7 pb-10 pt-9 sm:px-12 sm:pb-14 sm:pt-12">
+    <div className="relative px-7 pb-10 pt-14 sm:px-12 sm:pb-14 sm:pt-16">
       {/* dog-ear */}
       <span
         aria-hidden
@@ -65,9 +65,13 @@ export function Letter() {
     <motion.article
       aria-label="Carta"
       className="relative w-full"
-      initial={{ opacity: 0, y: 36 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: "-30%", scale: 0.97 }}
+      animate={{ opacity: 1, y: "0%", scale: 1 }}
+      transition={{
+        opacity: { duration: 0.6 },
+        scale: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+        y: T_TOP,
+      }}
     >
       {/* paper body + shadow: grows with the unfolding */}
       <motion.div
@@ -99,7 +103,7 @@ export function Letter() {
         {[33.333, 66.666].map((t) => (
           <span
             key={t}
-            className="absolute inset-x-0 h-[6px] -translate-y-1/2 bg-[linear-gradient(180deg,transparent,oklch(0.45_0.04_15/0.07)_45%,oklch(1_0_0/0.7)_55%,transparent)]"
+            className="absolute inset-x-0 h-[10px] -translate-y-1/2 mix-blend-multiply bg-[linear-gradient(180deg,transparent,oklch(0.5_0.04_15/0.06)_48%,oklch(0.5_0.04_15/0.02)_52%,transparent)]"
             style={{ top: `${t}%` }}
           />
         ))}
@@ -131,7 +135,7 @@ function FoldPanel({ index }: { index: 0 | 1 | 2 }) {
       {/* front: letter slice */}
       <div className="absolute inset-0 overflow-hidden bg-paper backface-hidden">
         <div className="absolute inset-x-0" style={{ top: `-${index * 100}%`, height: "300%" }}>
-          <Grain strength={0.5} />
+          <Grain strength={0.32} />
           <LetterFace />
         </div>
         {folds && (
@@ -156,7 +160,7 @@ function FoldPanel({ index }: { index: 0 | 1 | 2 }) {
           className="absolute inset-0 overflow-hidden bg-paper-back backface-hidden"
           style={{ transform: "rotateX(180deg)" }}
         >
-          <Grain strength={0.55} />
+          <Grain strength={0.35} />
           {isTop && (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
               <p className="font-script text-[34px] leading-none text-wine">Para você</p>
