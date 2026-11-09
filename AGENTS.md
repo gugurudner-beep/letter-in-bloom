@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- The keepsake prototype lives in `src/components/keepsake/` (one component per stationery piece, orchestrated by `KeepsakeExperience`); keep it frontend-only so the demo stays self-contained.
+- Animations use the `motion` package; the Polaroid moves between stages via a shared `layoutId`, so keep its wrappers free of rotated ancestors during handoff to avoid layout jumps.
+- Stationery colors, shadows and paper grain are tokens in `src/styles.css`; components never hardcode colors so the palette can change in one place.
